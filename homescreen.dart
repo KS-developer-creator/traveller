@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:travellers/screens/login.dart';
+import 'package:travel/screens/signup.dart';
 
+import 'login.dart';
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,56 +14,56 @@ class HomeScreen extends StatelessWidget {
           children: [
             // Logo at the top
             Container(
-              padding: EdgeInsets.only(left: 4, top: 10),
+              padding: const EdgeInsets.only(left: 4, top: 10),
               alignment: Alignment.topLeft,
-              child: Image.asset('assets/welcome-top.png', height: 100),
+              child: Image.asset('assets/welcome-top.png', height: 130),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             // Welcome message in the middle
             Container(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
+              padding: const EdgeInsets.all(16.0),
+              child: const Text(
                 'Welcome!',
                 style: TextStyle(
                   fontSize: 53,
                   fontFamily: 'BebasNeue',
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w600,
                   color: Color(0xFF093260),
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 30,
             ),
             // Buttons for login and signup at the bottom
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Flexible(
                   child: Container(
-                    margin: EdgeInsets.only(right: 8.0),
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    height: 52.0,
+                    margin: const EdgeInsets.only(right: 20.0),
+                    width: 138,
+                    height: 52,
                     decoration: BoxDecoration(
-                      color: Color(0xFF093260),
-                      borderRadius: BorderRadius.circular(100.0),
+                      color: const Color(0xFF093260),
+                      borderRadius: BorderRadius.circular(90.0),
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const loginpage()));
                         // Add login button functionality
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
+                        backgroundColor: Colors.transparent,
                         elevation: 0,
                       ),
-                      child: Text(
+                      child: const Text(
                         'Login',
                         style: TextStyle(
                           fontFamily: 'Poppins',
-                          fontSize: 16.0,
+                          fontSize: 18.0,
                           color: Colors.white,
                         ),
                       ),
@@ -69,26 +72,26 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Flexible(
                   child: Container(
-                    margin: EdgeInsets.only(left: 8.0),
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    height: 52.0,
+                    margin: const EdgeInsets.only(left: 20.0),
+                    width: 138,
+                    height: 52,
                     decoration: BoxDecoration(
-                      color: Color(0xFF093260),
-                      borderRadius: BorderRadius.circular(100.0),
+                      color: const Color(0xFF093260),
+                      borderRadius: BorderRadius.circular(90.0),
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        // Add signup button functionality
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const signup()));
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
+                        backgroundColor: Colors.transparent,
                         elevation: 0,
                       ),
-                      child: Text(
+                      child: const Text(
                         'Signup',
                         style: TextStyle(
                           fontFamily: 'Poppins',
-                          fontSize: 16.0,
+                          fontSize: 18.0,
                           color: Colors.white,
                         ),
                       ),
@@ -97,8 +100,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 38.0, // Proper gap between the button rows
+            const SizedBox(
+              height: 50.0, // Proper gap between the button rows
             ),
             // Three additional buttons below with a grey background
             Column(
@@ -109,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                     _handleGoogleSignIn();
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     elevation: 0,
                     padding: EdgeInsets.zero,
                   ),
@@ -117,12 +120,12 @@ class HomeScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.85,
                     height: 50.0,
                     decoration: BoxDecoration(
-                      color: Color(0xD6D5D5),
+                      color: const Color(0x00d6d5d5),
                       borderRadius: BorderRadius.circular(16.0),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF245FA6).withOpacity(0.05),
-                          offset: Offset(0, 1),
+                          color: const Color(0xFF245FA6).withOpacity(0.05),
+                          offset: const Offset(0, 1),
                           blurRadius: 3,
                           spreadRadius: 1,
                         ),
@@ -131,28 +134,28 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('assets/googlelogo.png', height: 20),
-                        SizedBox(width: 10),
-                        Text(
+                        Image.asset('assets/google.png', height: 20),
+                        const SizedBox(width: 10),
+                        const Text(
                           'Login with Google',
                           style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 13.0,
-                            color: Colors.black,
+                            fontSize: 16.0,
+                            color: Colors.grey,
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     // Add Facebook sign-in functionality
                     _handleFacebookSignIn();
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     elevation: 0,
                     padding: EdgeInsets.zero,
                   ),
@@ -160,12 +163,12 @@ class HomeScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.85,
                     height: 50.0,
                     decoration: BoxDecoration(
-                      color: Color(0xD6D5D5),
+                      color: const Color(0x00d6d5d5),
                       borderRadius: BorderRadius.circular(16.0),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF245FA6).withOpacity(0.05),
-                          offset: Offset(0, 1),
+                          color: const Color(0xFF245FA6).withOpacity(0.05),
+                          offset: const Offset(0, 1),
                           blurRadius: 3,
                           spreadRadius: 1,
                         ),
@@ -174,28 +177,28 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('assets/facebooklogo.png', height: 20),
-                        SizedBox(width: 10),
-                        Text(
+                        Image.asset('assets/facebook.png', height: 20),
+                        const SizedBox(width: 10),
+                        const Text(
                           'Login with Facebook',
                           style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 13.0,
-                            color: Colors.black,
+                            fontSize: 16.0,
+                            color: Colors.grey,
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     // Add Apple sign-in functionality
                     _handleAppleSignIn();
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     elevation: 0,
                     padding: EdgeInsets.zero,
                   ),
@@ -203,12 +206,12 @@ class HomeScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.85,
                     height: 50.0,
                     decoration: BoxDecoration(
-                      color: Color(0xFDFBFF),
+                      color: const Color(0x00fdfbff),
                       borderRadius: BorderRadius.circular(16.0),
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFF245FA6).withOpacity(0.05),
-                          offset: Offset(0, 1),
+                          color: const Color(0xFF245FA6).withOpacity(0.05),
+                          offset: const Offset(0, 1),
                           blurRadius: 3,
                           spreadRadius: 1,
                         ),
@@ -217,14 +220,14 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('assets/applelogo.png', height: 22),
-                        SizedBox(width: 8),
-                        Text(
+                        Image.asset('assets/apple.png', height: 22),
+                        const SizedBox(width: 8),
+                        const Text(
                           'Login with Apple',
                           style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 13.0,
-                            color: Colors.black,
+                            fontSize: 16.0,
+                            color: Colors.grey,
                           ),
                         ),
                       ],
@@ -233,14 +236,14 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 56.0,
+            const SizedBox(
+              height: 59.0,
             ),
             // Image at the bottom right
             Container(
               alignment: Alignment.bottomRight,
-              margin: EdgeInsets.only(right: 16, bottom: 16), // Adjust margin as needed
-              child: Image.asset('assets/welcome bottom.png', width: 230,),
+              margin: const EdgeInsets.only(right: 16, bottom: 16), // Adjust margin as needed
+              child: Image.asset('assets/welcome bottom.png', width: 330,),
             ),
           ],
         ),
@@ -248,21 +251,18 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Example method for Google sign-in
   void _handleGoogleSignIn() {
-    // Add your Google sign-in logic here
+    // Placeholder for Google sign-in logic
     print("Initiate Google Sign-In");
   }
 
-  // Example method for Facebook sign-in
   void _handleFacebookSignIn() {
-    // Add your Facebook sign-in logic here
+    // Placeholder for Facebook sign-in logic
     print("Initiate Facebook Sign-In");
   }
 
-  // Example method for Apple sign-in
   void _handleAppleSignIn() {
-    // Add your Apple sign-in logic here
+    // Placeholder for Apple sign-in logic
     print("Initiate Apple Sign-In");
   }
 }

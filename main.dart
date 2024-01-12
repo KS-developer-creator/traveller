@@ -1,17 +1,36 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:travel/sharedprefrencelibrary.dart';
 import 'dart:async';
 import 'screens/homescreen.dart';
-import 'screens/login.dart';
-import 'screens/signup.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  log("FCMToken $fcmToken");
+  // Retrieve the FCM token from SharedPreferences
+  await SharedPreferencesHelper.saveFcmToken(fcmToken);
+  String? savedFcmToken = await SharedPreferencesHelper.getFcmToken();
+  print("Saved FCM Token: $savedFcmToken");
+
+  bool isLoggedIn = await SharedPreferencesHelper.getLoginStatus();
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
+  runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(), // Set SplashScreen as the home screen
     );
@@ -19,6 +38,8 @@ class MyApp extends StatelessWidget {
 }
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -29,11 +50,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     // Add a delay to simulate a splash screen
-    Timer(Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 4), () {
       // Navigate to the main screen after the splash screen is displayed
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
     });
   }
@@ -55,7 +76,9 @@ class _SplashScreenState extends State<SplashScreen> {
           ],
         ),
       ),
+
     );
   }
 }
+
 
